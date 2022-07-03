@@ -11,24 +11,24 @@ countApplesAndOranges(10, 20, 5, 25, new List<int> {5, 3, -1, 10, 20, 9} , new L
 
 */
 
-static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges) {
-    int totalApplesInHouse = 0;
-    int totalOrangesInHouse = 0;
+// DRY => Do not Repeat Yourself
+// Loops & Functions
 
-    foreach(int applePosition in apples) {
-        int positionOfApple = a + applePosition;
-        if(positionOfApple >= s && positionOfApple <= t) {
-            totalApplesInHouse++;
+static void countApplesAndOranges(int s, int t, int a, int b, List<int> apples, List<int> oranges) {
+    int totalApples = countFruits(s, t, a, apples);
+    int totalOranges = countFruits(s, t, b, oranges);
+    Console.WriteLine(totalApples);
+    Console.WriteLine(totalOranges);
+}
+
+static int countFruits(int houseStart, int houseEnd, int treePosition, List<int> relativePositions) {
+    int totalFruitsInHouse = 0;
+    foreach(int relativePosition in relativePositions) {
+        int position = treePosition + relativePosition;
+        if(position >= houseStart && position <= houseEnd) {
+            totalFruitsInHouse++;
         }
     }
-
-    foreach(int orangePosition in oranges) {
-        int positionOfOrange = b + orangePosition;
-        if(positionOfOrange >= s && positionOfOrange <= t) {
-            totalOrangesInHouse++;
-        }
-    }    
-
-    Console.WriteLine($"Apples: {totalApplesInHouse}, Oranges: {totalOrangesInHouse}");
+    return totalFruitsInHouse;
 }
 
