@@ -2,7 +2,7 @@
     public static void Main() {
         Car c = new Car();
         c.Wheels = 10;
-        c.isRunning = false;
+        //c.isRunning = false;
     }
 } 
 
@@ -97,7 +97,7 @@ internal class MercedesBenz : Car {
     public new int Doors { get => 4; private set {} }
     public bool FoldableRoof { get; set; }
     public bool LifeInsurance {get;set;}
-    public Chair CarChair {get; set;}
+    //public Chair CarChair {get; set;}
 }
 
 public class Chair {
